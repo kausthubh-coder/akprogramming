@@ -1,0 +1,29 @@
+{% extends 'base/base.html'  %}
+
+{% block title %}blogs{% endblock title %}
+
+
+
+{% block content %}
+
+<form method="GET" action="{% url 'all_blogs' %}" class="p-10">
+    <input type="text" placeholder="Search past Sessions" class="input input-bordered input-primary w-full max-w-xs" name="q">
+</form>
+
+{% for i in blogs %}
+<div class="card w-96 bg-purple-900 shadow-xl p-15">
+    <div class="card-body">
+      <h2 class="card-title">
+        <a href="{% url 'blog' id=i.id%}">{{ i.title }}</a>   
+      </h2>
+      <p>{{ i.description }}</p>
+      <div class="card-actions justify-end">
+        <div class="badge badge-outline">{{ i.date_created }}</div> 
+      </div>
+    </div>
+</div>
+{% endfor %}
+</body>
+
+
+{% endblock content %}
